@@ -121,7 +121,7 @@ import com.kodelabs.boilerplate.domain.executor.Executor;
 import com.kodelabs.boilerplate.domain.executor.MainThread;
 import com.kodelabs.boilerplate.domain.interactors.WelcomingInteractor;
 import com.kodelabs.boilerplate.domain.interactors.base.AbstractInteractor;
-import com.kodelabs.boilerplate.domain.repository.MessageRepository;
+import com.kodelabs.boilerplate.domain.topicRepository.MessageRepository;
 ```
 
 As you can see, there is **no mention of any Android code**. That is the **main benefit** of this approach. Also, we do not care about specifics of the UI or database, we just call interface methods that someone somewhere in the outer layer will implement.
@@ -259,7 +259,7 @@ And that is pretty much it for the presentation layer.
 
 ## **Writing the storage layer**
 
-This is where our repository gets implemented. All the database specific code should come here. The repository pattern just abstracts where the data is coming from. Our main business logic is oblivious to the source of the data — be it from a database, a server or text files.
+This is where our topicRepository gets implemented. All the database specific code should come here. The topicRepository pattern just abstracts where the data is coming from. Our main business logic is oblivious to the source of the data — be it from a database, a server or text files.
 
 For complex data you can use [ContentProviders] or ORM tools such as [DBFlow]. If you need to retrieve data from the web then [Retrofit] will help you. If you need simple key-value storage then you can use [SharedPreferences]. You should use the right tool for the job.
 

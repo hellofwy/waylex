@@ -2,6 +2,8 @@ package me.hellofwy.v2ex;
 
 import android.app.Application;
 
+import com.squareup.picasso.Picasso;
+
 import timber.log.Timber;
 import timber.log.Timber.DebugTree;
 
@@ -12,5 +14,7 @@ public class AndroidApplication extends Application {
 
         // initiate Timber
         Timber.plant(new DebugTree());
+
+        Picasso.with(getApplicationContext()).setIndicatorsEnabled(true);
     }
 }
