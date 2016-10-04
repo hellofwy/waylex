@@ -23,6 +23,8 @@ public class MainPresenterImpl extends AbstractPresenter implements MainPresente
     private MainPresenter.View mView;
     private TopicRepository mRepository;
 
+    private boolean isFirstTime;
+
     public MainPresenterImpl(Executor executor,
                              MainThread mainThread,
                              View view,
@@ -30,12 +32,16 @@ public class MainPresenterImpl extends AbstractPresenter implements MainPresente
         super(executor, mainThread);
         mView = view;
         mRepository = repository;
+        isFirstTime = true;
     }
 
     @Override
     public void resume() {
         Timber.v("presator resume");
-        getLatestTopics();
+        if(isFirstTime) {
+            getLatestTopics();
+            isFirstTime = false;
+        }
     }
 
     @Override

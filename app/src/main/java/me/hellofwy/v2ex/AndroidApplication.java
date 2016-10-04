@@ -15,6 +15,6 @@ public class AndroidApplication extends Application {
         // initiate Timber
         Timber.plant(new DebugTree());
 
-        Picasso.with(getApplicationContext()).setIndicatorsEnabled(true);
+//        Picasso.with(getApplicationContext()).setIndicatorsEnabled(true);
     }
 }

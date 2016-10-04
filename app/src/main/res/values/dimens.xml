@@ -8,9 +8,9 @@
     <dimen name="activity_horizontal_margin">@dimen/layout_grid_half</dimen>
     <dimen name="activity_vertical_margin">@dimen/layout_grid_half</dimen>
 
-    <dimen name="text_size_title">18sp</dimen>
-    <dimen name="text_size_info_small">14sp</dimen>
+    <dimen name="text_size_title">16sp</dimen>
+    <dimen name="text_size_info_small">12sp</dimen>
     <dimen name="text_size_content">16sp</dimen>
 
-    <dimen name="image_view_avatar">48dp</dimen>
+    <dimen name="image_view_avatar">24dp</dimen>
 </resources>

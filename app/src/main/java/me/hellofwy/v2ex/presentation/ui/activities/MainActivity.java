@@ -1,12 +1,17 @@
 package me.hellofwy.v2ex.presentation.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,18 +29,21 @@ import me.hellofwy.v2ex.threading.MainThreadImpl;
 import timber.log.Timber;
 
 import static android.R.id.message;
+import static me.hellofwy.v2ex.util.Convertor.dipToPixels;
 
 public class MainActivity extends AppCompatActivity
             implements MainPresenter.View,
+        ItemAdapter.OpenUrlListener,
         SwipeRefreshLayout.OnRefreshListener {
-    @Bind(R.id.progress_bar)
-    ProgressBar progressBar;
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
 
     @Bind(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+
+    @Bind(R.id.tool_bar)
+    Toolbar toolbar;
 
     private MainPresenter mMainPresenter;
     private ItemAdapter mAdapter;
@@ -54,9 +62,11 @@ public class MainActivity extends AppCompatActivity
                 ThreadExecutor.getInstance(),
                 MainThreadImpl.getInstance(),
                 this,
-//                new TestTopicRepositoryImpl(this)
-                new TopicRepositoryImpl()
+                new TestTopicRepositoryImpl(this)
+//                new TopicRepositoryImpl()
         );
+
+        setSupportActionBar(toolbar);
 
         swipeContainer.setOnRefreshListener(this);
         swipeContainer.setColorSchemeResources(R.color.colorAccent);
@@ -104,5 +114,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRefresh() {
         mMainPresenter.swipeRefresh();
+    }
+
+    @Override
+    public void openUrl(String url) {
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("url", url);
+        startActivity(intent);
     }
 }
