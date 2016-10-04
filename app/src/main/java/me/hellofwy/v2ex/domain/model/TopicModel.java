@@ -1,131 +1,124 @@
+
 package me.hellofwy.v2ex.domain.model;
 
-/**
- * A sample model. Replace this with your own.
- */
+import com.google.gson.annotations.SerializedName;
+
+import org.w3c.dom.Node;
+
+import java.lang.reflect.Member;
+
+@SuppressWarnings("unused")
 public class TopicModel {
 
-    private int id;
-    private String title;
-    private String url;
-    private String content;
-    private String content_rendered;
-    private int replies;
-    private MemberModel member;
-    private NodeModel node;
-    private long created;
-    private long last_modified;
-    private long last_touched;
-
-    public TopicModel(int id,
-                      String title,
-                      String url,
-                      String content,
-                      String content_rendered,
-                      int replies,
-                      MemberModel member,
-                      NodeModel node,
-                      long created,
-                      long last_modified,
-                      long last_touched) {
-        this.id = id;
-        this.title = title;
-        this.url = url;
-        this.content = content;
-        this.content_rendered = content_rendered;
-        this.replies = replies;
-        this.member = member;
-        this.node = node;
-        this.created = created;
-        this.last_modified = last_modified;
-        this.last_touched = last_touched;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    @SerializedName("content")
+    private String mContent;
+    @SerializedName("content_rendered")
+    private String mContentRendered;
+    @SerializedName("created")
+    private Long mCreated;
+    @SerializedName("id")
+    private Long mId;
+    @SerializedName("last_modified")
+    private Long mLastModified;
+    @SerializedName("last_touched")
+    private Long mLastTouched;
+    @SerializedName("member")
+    private MemberModel mMember;
+    @SerializedName("node")
+    private NodeModel mNode;
+    @SerializedName("replies")
+    private Long mReplies;
+    @SerializedName("title")
+    private String mTitle;
+    @SerializedName("url")
+    private String mUrl;
 
     public String getContent() {
-        return content;
+        return mContent;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        mContent = content;
     }
 
-    public String getContent_rendered() {
-        return content_rendered;
+    public String getContentRendered() {
+        return mContentRendered;
     }
 
-    public void setContent_rendered(String content_rendered) {
-        this.content_rendered = content_rendered;
+    public void setContentRendered(String content_rendered) {
+        mContentRendered = content_rendered;
     }
 
-    public int getReplies() {
-        return replies;
+    public Long getCreated() {
+        return mCreated;
     }
 
-    public void setReplies(int replies) {
-        this.replies = replies;
+    public void setCreated(Long created) {
+        mCreated = created;
+    }
+
+    public Long getId() {
+        return mId;
+    }
+
+    public void setId(Long id) {
+        mId = id;
+    }
+
+    public Long getLastModified() {
+        return mLastModified;
+    }
+
+    public void setLastModified(Long last_modified) {
+        mLastModified = last_modified;
+    }
+
+    public Long getLastTouched() {
+        return mLastTouched;
+    }
+
+    public void setLastTouched(Long last_touched) {
+        mLastTouched = last_touched;
     }
 
     public MemberModel getMember() {
-        return member;
+        return mMember;
     }
 
     public void setMember(MemberModel member) {
-        this.member = member;
+        mMember = member;
     }
 
     public NodeModel getNode() {
-        return node;
+        return mNode;
     }
 
     public void setNode(NodeModel node) {
-        this.node = node;
+        mNode = node;
     }
 
-    public long getCreated() {
-        return created;
+    public Long getReplies() {
+        return mReplies;
     }
 
-    public void setCreated(long created) {
-        this.created = created;
+    public void setReplies(Long replies) {
+        mReplies = replies;
     }
 
-    public long getLast_modified() {
-        return last_modified;
+    public String getTitle() {
+        return mTitle;
     }
 
-    public void setLast_modified(long last_modified) {
-        this.last_modified = last_modified;
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
-    public long getLast_touched() {
-        return last_touched;
+    public String getUrl() {
+        return mUrl;
     }
 
-    public void setLast_touched(long last_touched) {
-        this.last_touched = last_touched;
+    public void setUrl(String url) {
+        mUrl = url;
     }
+
 }

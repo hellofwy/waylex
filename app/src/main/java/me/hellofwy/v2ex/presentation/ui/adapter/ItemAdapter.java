@@ -101,7 +101,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mParentActivity = context;
             mTopic = topic;
             Picasso.with((Activity)context)
-                    .load("https:" + topic.getMember().getAvatar_normal())
+                    .load("https:" + topic.getMember().getAvatarNormal())
                     .placeholder(R.drawable.avatar_default)
                     .error(R.drawable.avatar_fail)
 //                    .transform(new RoundedCornersTransformation(4, 0))
@@ -111,7 +111,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             member.setText(topic.getMember().getUsername());
             replies.setText(String.valueOf(topic.getReplies()));
             last_modified.setText(
-                    LatestTimeFormat.format(topic.getLast_modified()));
+                    LatestTimeFormat.format(topic.getLastModified()));
 //            content.setText(Html.fromHtml(topic.getContent_rendered()));
             content.setText(topic.getContent());
         }

@@ -3,6 +3,8 @@ package me.hellofwy.v2ex.network;
 import java.io.IOException;
 import java.util.List;
 
+import me.hellofwy.v2ex.domain.model.MemberModel;
+import me.hellofwy.v2ex.domain.model.NodeModel;
 import me.hellofwy.v2ex.domain.model.TopicModel;
 import me.hellofwy.v2ex.domain.repository.TopicRepository;
 import retrofit2.Call;
@@ -44,5 +46,25 @@ public class TopicRepositoryImpl implements TopicRepository {
             return null;
         }
         return topics;
+    }
+
+    @Override
+    public List<TopicModel> getHotTopics() {
+        return null;
+    }
+
+    @Override
+    public NodeModel getNodeInfo(String nodeName) {
+        return null;
+    }
+
+    @Override
+    public MemberModel getMemberInfoById(String memberId) {
+        return null;
+    }
+
+    @Override
+    public MemberModel getMemberInfoByName(String memberName) {
+        return null;
     }
 }

@@ -1,72 +1,171 @@
+
 package me.hellofwy.v2ex.domain.model;
 
-/**
- * Created by fwy on 2016/9/26.
- */
+import com.google.gson.annotations.SerializedName;
 
+
+@SuppressWarnings("unused")
 public class MemberModel {
-    private int id;
-    private String username;
-    private String tagline;
-    private String avatar_mini;
-    private String avatar_normal;
-    private String avatar_large;
 
-    public MemberModel(int id, String username, String tagline, String avatar_mini,
-                       String avatar_normal, String avatar_large) {
-        this.id = id;
-        this.username = username;
-        this.tagline = tagline;
-        this.avatar_mini = avatar_mini;
-        this.avatar_normal = avatar_normal;
-        this.avatar_large = avatar_large;
+    @SerializedName("avatar_large")
+    private String mAvatarLarge;
+    @SerializedName("avatar_mini")
+    private String mAvatarMini;
+    @SerializedName("avatar_normal")
+    private String mAvatarNormal;
+    @SerializedName("bio")
+    private String mBio;
+    @SerializedName("btc")
+    private String mBtc;
+    @SerializedName("created")
+    private Long mCreated;
+    @SerializedName("github")
+    private String mGithub;
+    @SerializedName("id")
+    private Long mId;
+    @SerializedName("location")
+    private String mLocation;
+    @SerializedName("psn")
+    private String mPsn;
+    @SerializedName("status")
+    private String mStatus;
+    @SerializedName("tagline")
+    private String mTagline;
+    @SerializedName("twitter")
+    private String mTwitter;
+    @SerializedName("url")
+    private String mUrl;
+    @SerializedName("username")
+    private String mUsername;
+    @SerializedName("website")
+    private String mWebsite;
+
+    public String getAvatarLarge() {
+        return mAvatarLarge;
     }
 
-    public int getId() {
-        return id;
+    public void setAvatarLarge(String avatar_large) {
+        mAvatarLarge = avatar_large;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getAvatarMini() {
+        return mAvatarMini;
     }
 
-    public String getUsername() {
-        return username;
+    public void setAvatarMini(String avatar_mini) {
+        mAvatarMini = avatar_mini;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getAvatarNormal() {
+        return mAvatarNormal;
+    }
+
+    public void setAvatarNormal(String avatar_normal) {
+        mAvatarNormal = avatar_normal;
+    }
+
+    public String getBio() {
+        return mBio;
+    }
+
+    public void setBio(String bio) {
+        mBio = bio;
+    }
+
+    public String getBtc() {
+        return mBtc;
+    }
+
+    public void setBtc(String btc) {
+        mBtc = btc;
+    }
+
+    public Long getCreated() {
+        return mCreated;
+    }
+
+    public void setCreated(Long created) {
+        mCreated = created;
+    }
+
+    public String getGithub() {
+        return mGithub;
+    }
+
+    public void setGithub(String github) {
+        mGithub = github;
+    }
+
+    public Long getId() {
+        return mId;
+    }
+
+    public void setId(Long id) {
+        mId = id;
+    }
+
+    public String getLocation() {
+        return mLocation;
+    }
+
+    public void setLocation(String location) {
+        mLocation = location;
+    }
+
+    public String getPsn() {
+        return mPsn;
+    }
+
+    public void setPsn(String psn) {
+        mPsn = psn;
+    }
+
+    public String getStatus() {
+        return mStatus;
+    }
+
+    public void setStatus(String status) {
+        mStatus = status;
     }
 
     public String getTagline() {
-        return tagline;
+        return mTagline;
     }
 
     public void setTagline(String tagline) {
-        this.tagline = tagline;
+        mTagline = tagline;
     }
 
-    public String getAvatar_mini() {
-        return avatar_mini;
+    public String getTwitter() {
+        return mTwitter;
     }
 
-    public void setAvatar_mini(String avatar_mini) {
-        this.avatar_mini = avatar_mini;
+    public void setTwitter(String twitter) {
+        mTwitter = twitter;
     }
 
-    public String getAvatar_normal() {
-        return avatar_normal;
+    public String getUrl() {
+        return mUrl;
     }
 
-    public void setAvatar_normal(String avatar_normal) {
-        this.avatar_normal = avatar_normal;
+    public void setUrl(String url) {
+        mUrl = url;
     }
 
-    public String getAvatar_large() {
-        return avatar_large;
+    public String getUsername() {
+        return mUsername;
     }
 
-    public void setAvatar_large(String avatar_large) {
-        this.avatar_large = avatar_large;
+    public void setUsername(String username) {
+        mUsername = username;
     }
+
+    public String getWebsite() {
+        return mWebsite;
+    }
+
+    public void setWebsite(String website) {
+        mWebsite = website;
+    }
+
 }

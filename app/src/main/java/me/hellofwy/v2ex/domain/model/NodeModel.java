@@ -1,103 +1,140 @@
+
 package me.hellofwy.v2ex.domain.model;
 
-/**
- * Created by fwy on 2016/9/26.
- */
+import com.google.gson.annotations.SerializedName;
+
+@SuppressWarnings("unused")
 public class NodeModel {
-    private int id;
-    private String name;
-    private String title;
-    private String title_alternative;
-    private String url;
-    private int topics;
-    private String avatar_mini;
-    private String avatar_normal;
-    private String avatar_large;
 
-    public NodeModel(int id, String name, String title,
-                     String title_alternative, String url,
-                     int topics, String avatar_mini, String avatar_normal,
-                     String avatar_large) {
-        this.id = id;
-        this.name = name;
-        this.title = title;
-        this.title_alternative = title_alternative;
-        this.url = url;
-        this.topics = topics;
-        this.avatar_mini = avatar_mini;
-        this.avatar_normal = avatar_normal;
-        this.avatar_large = avatar_large;
+    @SerializedName("avatar_large")
+    private String mAvatarLarge;
+    @SerializedName("avatar_mini")
+    private String mAvatarMini;
+    @SerializedName("avatar_normal")
+    private String mAvatarNormal;
+    @SerializedName("created")
+    private Long mCreated;
+    @SerializedName("footer")
+    private Object mFooter;
+    @SerializedName("header")
+    private String mHeader;
+    @SerializedName("id")
+    private Long mId;
+    @SerializedName("name")
+    private String mName;
+    @SerializedName("stars")
+    private Long mStars;
+    @SerializedName("title")
+    private String mTitle;
+    @SerializedName("title_alternative")
+    private String mTitleAlternative;
+    @SerializedName("topics")
+    private Long mTopics;
+    @SerializedName("url")
+    private String mUrl;
+
+    public String getAvatarLarge() {
+        return mAvatarLarge;
     }
 
-    public int getId() {
-        return id;
+    public void setAvatarLarge(String avatar_large) {
+        mAvatarLarge = avatar_large;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getAvatarMini() {
+        return mAvatarMini;
+    }
+
+    public void setAvatarMini(String avatar_mini) {
+        mAvatarMini = avatar_mini;
+    }
+
+    public String getAvatarNormal() {
+        return mAvatarNormal;
+    }
+
+    public void setAvatarNormal(String avatar_normal) {
+        mAvatarNormal = avatar_normal;
+    }
+
+    public Long getCreated() {
+        return mCreated;
+    }
+
+    public void setCreated(Long created) {
+        mCreated = created;
+    }
+
+    public Object getFooter() {
+        return mFooter;
+    }
+
+    public void setFooter(Object footer) {
+        mFooter = footer;
+    }
+
+    public String getHeader() {
+        return mHeader;
+    }
+
+    public void setHeader(String header) {
+        mHeader = header;
+    }
+
+    public Long getId() {
+        return mId;
+    }
+
+    public void setId(Long id) {
+        mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        mName = name;
+    }
+
+    public Long getStars() {
+        return mStars;
+    }
+
+    public void setStars(Long stars) {
+        mStars = stars;
     }
 
     public String getTitle() {
-        return title;
+        return mTitle;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        mTitle = title;
     }
 
-    public String getTitle_alternative() {
-        return title_alternative;
+    public String getTitleAlternative() {
+        return mTitleAlternative;
     }
 
-    public void setTitle_alternative(String title_alternative) {
-        this.title_alternative = title_alternative;
+    public void setTitleAlternative(String title_alternative) {
+        mTitleAlternative = title_alternative;
+    }
+
+    public Long getTopics() {
+        return mTopics;
+    }
+
+    public void setTopics(Long topics) {
+        mTopics = topics;
     }
 
     public String getUrl() {
-        return url;
+        return mUrl;
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        mUrl = url;
     }
 
-    public int getTopics() {
-        return topics;
-    }
-
-    public void setTopics(int topics) {
-        this.topics = topics;
-    }
-
-    public String getAvatar_mini() {
-        return avatar_mini;
-    }
-
-    public void setAvatar_mini(String avatar_mini) {
-        this.avatar_mini = avatar_mini;
-    }
-
-    public String getAvatar_normal() {
-        return avatar_normal;
-    }
-
-    public void setAvatar_normal(String avatar_normal) {
-        this.avatar_normal = avatar_normal;
-    }
-
-    public String getAvatar_large() {
-        return avatar_large;
-    }
-
-    public void setAvatar_large(String avatar_large) {
-        this.avatar_large = avatar_large;
-    }
 }

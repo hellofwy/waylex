@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.List;
 
 import me.hellofwy.v2ex.R;
+import me.hellofwy.v2ex.domain.model.MemberModel;
+import me.hellofwy.v2ex.domain.model.NodeModel;
 import me.hellofwy.v2ex.domain.model.TopicModel;
 import me.hellofwy.v2ex.domain.repository.TopicRepository;
 import me.hellofwy.v2ex.network.V2EXapi;
@@ -53,5 +55,25 @@ public class TestTopicRepositoryImpl implements TopicRepository {
             Timber.e(e.getClass().getSimpleName());
         }
         return Arrays.asList(topics);
+    }
+
+    @Override
+    public List<TopicModel> getHotTopics() {
+        return null;
+    }
+
+    @Override
+    public NodeModel getNodeInfo(String nodeName) {
+        return null;
+    }
+
+    @Override
+    public MemberModel getMemberInfoById(String memberId) {
+        return null;
+    }
+
+    @Override
+    public MemberModel getMemberInfoByName(String memberName) {
+        return null;
     }
 }
