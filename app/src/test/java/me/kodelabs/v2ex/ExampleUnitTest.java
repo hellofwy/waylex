@@ -13,9 +13,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.List;
 
+import me.hellofwy.v2ex.domain.model.MemberModel;
+import me.hellofwy.v2ex.domain.model.NodeModel;
 import me.hellofwy.v2ex.domain.model.TopicModel;
 import me.hellofwy.v2ex.network.V2EXapi;
 import retrofit2.Call;
@@ -70,5 +73,25 @@ public class ExampleUnitTest {
                 gson.fromJson(new InputStreamReader(path, "UTF-8"), TopicModel[].class);
         assertEquals(topics[0].getTitle(), "北京 Android 1.5 年 可独立开发 求个坑");
 //        assertEquals(15, topics.length);
+    }
+
+    @Test
+    public void testMemberModel() throws IOException {
+        InputStream path = this.getClass().getClassLoader()
+                .getResourceAsStream("member.json");
+        Gson gson = new Gson();
+        MemberModel member =
+                gson.fromJson(new InputStreamReader(path, "UTF-8"), MemberModel.class);
+        assertEquals(member.getUsername(), "Livid");
+    }
+
+    @Test
+    public void testNodeModel() throws IOException {
+        InputStream path = this.getClass().getClassLoader()
+                .getResourceAsStream("node.json");
+        Gson gson = new Gson();
+        NodeModel node =
+                gson.fromJson(new InputStreamReader(path, "UTF-8"), NodeModel.class);
+        assertEquals(node.getName(), "python");
     }
 }

@@ -12,6 +12,4 @@ public interface GetLatestTopicsInteractor extends Interactor {
     interface Callback {
         void onGetLatestTopics(List<TopicModel> topics);
     }
-
-    // TODO: Add interactor methods here
 }

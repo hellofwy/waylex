@@ -40,6 +40,8 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface OpenUrlListener {
         void openUrl(String url);
+
+        void openMember(Long id);
     }
     private enum ITEM_TYPE {
         NORMAL,
@@ -94,7 +96,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mAdapter = adapter;
-            itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(this);
         }
 
         public void setup(OpenUrlListener context, TopicModel topic) {
@@ -114,6 +116,10 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     LatestTimeFormat.format(topic.getLastModified()));
 //            content.setText(Html.fromHtml(topic.getContent_rendered()));
             content.setText(topic.getContent());
+
+            avatar.setOnClickListener(this);
+            title.setOnClickListener(this);
+            member.setOnClickListener(this);
         }
 
         public void setContentVisibility(boolean visibility) {
@@ -126,15 +132,17 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            int position = getAdapterPosition();
-//            Boolean isContain = mAdapter.mSelectedItems.contains(position);
-//            if(isContain) {
-//                mAdapter.mSelectedItems.remove(position);
-//            } else {
-//                mAdapter.mSelectedItems.add(position);
-//            }
-//            setContentVisibility(mAdapter.mSelectedItems.contains(position));
-            mParentActivity.openUrl(mTopic.getUrl());
+            switch (v.getId()) {
+                case R.id.text_view_title:
+                    int position = getAdapterPosition();
+                    mParentActivity.openUrl(mTopic.getUrl());
+                    break;
+
+                case R.id.image_view_avatar:
+                case R.id.text_view_member:
+                    mParentActivity.openMember(mTopic.getMember().getId());
+                    break;
+            }
         }
     }
 

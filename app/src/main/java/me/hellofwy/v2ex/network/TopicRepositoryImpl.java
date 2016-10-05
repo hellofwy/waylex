@@ -11,6 +11,8 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static me.hellofwy.v2ex.R.raw.node;
+
 /**
  * Created by fwy on 2016/9/28.
  */
@@ -50,21 +52,49 @@ public class TopicRepositoryImpl implements TopicRepository {
 
     @Override
     public List<TopicModel> getHotTopics() {
-        return null;
+        Call<List<TopicModel>> topics_call = mV2EXapiService.getHotTopics();
+        List<TopicModel> topics;
+        try {
+            topics = topics_call.execute().body();
+        } catch (IOException e) {
+            return null;
+        }
+        return topics;
     }
 
     @Override
     public NodeModel getNodeInfo(String nodeName) {
-        return null;
+        Call<NodeModel> node_call = mV2EXapiService.getNodeInfo(nodeName);
+        NodeModel node;
+        try {
+            node = node_call.execute().body();
+        } catch (IOException e) {
+            return null;
+        }
+        return node;
     }
 
     @Override
     public MemberModel getMemberInfoById(String memberId) {
-        return null;
+        Call<MemberModel> member_call = mV2EXapiService.getMemberInfoById(memberId);
+        MemberModel member;
+        try {
+            member = member_call.execute().body();
+        } catch (IOException e) {
+            return null;
+        }
+        return member;
     }
 
     @Override
     public MemberModel getMemberInfoByName(String memberName) {
-        return null;
+        Call<MemberModel> member_call = mV2EXapiService.getMemberInfoByName(memberName);
+        MemberModel member;
+        try {
+            member = member_call.execute().body();
+        } catch (IOException e) {
+            return null;
+        }
+        return member;
     }
 }

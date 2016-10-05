@@ -3,15 +3,10 @@ package me.hellofwy.v2ex.presentation.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,7 +15,6 @@ import butterknife.ButterKnife;
 import me.hellofwy.v2ex.R;
 import me.hellofwy.v2ex.domain.executor.impl.ThreadExecutor;
 import me.hellofwy.v2ex.domain.model.TopicModel;
-import me.hellofwy.v2ex.network.TopicRepositoryImpl;
 import me.hellofwy.v2ex.presentation.presenters.MainPresenter;
 import me.hellofwy.v2ex.presentation.presenters.impl.MainPresenterImpl;
 import me.hellofwy.v2ex.presentation.ui.adapter.ItemAdapter;
@@ -28,13 +22,10 @@ import me.hellofwy.v2ex.storage.TestTopicRepositoryImpl;
 import me.hellofwy.v2ex.threading.MainThreadImpl;
 import timber.log.Timber;
 
-import static android.R.id.message;
-import static me.hellofwy.v2ex.util.Convertor.dipToPixels;
-
 public class MainActivity extends AppCompatActivity
-            implements MainPresenter.View,
-        ItemAdapter.OpenUrlListener,
-        SwipeRefreshLayout.OnRefreshListener {
+    implements MainPresenter.View,
+               ItemAdapter.OpenUrlListener,
+               SwipeRefreshLayout.OnRefreshListener {
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -120,6 +111,13 @@ public class MainActivity extends AppCompatActivity
     public void openUrl(String url) {
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra("url", url);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openMember(Long id) {
+        Intent intent = new Intent(this, MemberActivity.class);
+        intent.putExtra(MemberActivity.MEMBER_ID, String.valueOf(id));
         startActivity(intent);
     }
 }

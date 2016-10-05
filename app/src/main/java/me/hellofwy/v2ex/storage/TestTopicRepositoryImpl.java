@@ -59,21 +59,66 @@ public class TestTopicRepositoryImpl implements TopicRepository {
 
     @Override
     public List<TopicModel> getHotTopics() {
-        return null;
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        InputStream file = mContext.getResources().openRawResource(R.raw.hot);
+        TopicModel[] topics = new TopicModel[0];
+        Gson gson = new Gson();
+        try {
+            topics = gson.fromJson(
+                    new InputStreamReader(file, "UTF-8"),
+                    TopicModel[].class);
+        } catch (UnsupportedEncodingException e) {
+            Timber.e(e.getClass().getSimpleName());
+        }
+        return Arrays.asList(topics);
     }
 
     @Override
     public NodeModel getNodeInfo(String nodeName) {
-        return null;
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        InputStream file = mContext.getResources().openRawResource(R.raw.node);
+        NodeModel node = new NodeModel();
+        Gson gson = new Gson();
+        try {
+            node = gson.fromJson(
+                    new InputStreamReader(file, "UTF-8"),
+                    NodeModel.class);
+        } catch (UnsupportedEncodingException e) {
+            Timber.e(e.getClass().getSimpleName());
+        }
+        return node;
     }
 
     @Override
     public MemberModel getMemberInfoById(String memberId) {
-        return null;
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        InputStream file = mContext.getResources().openRawResource(R.raw.member);
+        MemberModel node = new MemberModel();
+        Gson gson = new Gson();
+        try {
+            node = gson.fromJson(
+                    new InputStreamReader(file, "UTF-8"),
+                    MemberModel.class);
+        } catch (UnsupportedEncodingException e) {
+            Timber.e(e.getClass().getSimpleName());
+        }
+        return node;
     }
 
     @Override
     public MemberModel getMemberInfoByName(String memberName) {
-        return null;
+        return getMemberInfoById(null);
     }
 }

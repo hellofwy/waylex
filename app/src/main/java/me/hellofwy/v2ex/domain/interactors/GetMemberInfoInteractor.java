@@ -14,5 +14,8 @@ public interface GetMemberInfoInteractor extends Interactor {
         void onGetMemberInfo(MemberModel member);
     }
 
-    // TODO: Add interactor methods here
+    enum QueryType {
+        ID,
+        NAME
+    }
 }
