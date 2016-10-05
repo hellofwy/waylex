@@ -120,4 +120,11 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra(MemberActivity.MEMBER_ID, String.valueOf(id));
         startActivity(intent);
     }
+
+    @Override
+    public void openNode(String name) {
+        Intent intent = new Intent(this, NodeActivity.class);
+        intent.putExtra(NodeActivity.NODE_NAME, name);
+        startActivity(intent);
+    }
 }

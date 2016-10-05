@@ -3,10 +3,6 @@ package me.hellofwy.v2ex.domain.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import org.w3c.dom.Node;
-
-import java.lang.reflect.Member;
-
 @SuppressWarnings("unused")
 public class TopicModel {
 

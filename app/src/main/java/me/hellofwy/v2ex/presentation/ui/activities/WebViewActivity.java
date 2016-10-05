@@ -1,9 +1,8 @@
 package me.hellofwy.v2ex.presentation.ui.activities;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;

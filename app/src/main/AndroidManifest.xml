@@ -26,6 +26,9 @@
         <activity android:name=".presentation.ui.activities.MemberActivity">
 
         </activity>
+
+        <activity android:name=".presentation.ui.activities.NodeActivity">
+        </activity>
     </application>
 
 </manifest>

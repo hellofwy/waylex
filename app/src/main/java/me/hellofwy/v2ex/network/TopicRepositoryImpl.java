@@ -11,8 +11,6 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static me.hellofwy.v2ex.R.raw.node;
-
 /**
  * Created by fwy on 2016/9/28.
  */

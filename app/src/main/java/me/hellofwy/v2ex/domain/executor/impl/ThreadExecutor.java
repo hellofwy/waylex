@@ -1,12 +1,12 @@
 package me.hellofwy.v2ex.domain.executor.impl;
 
-import me.hellofwy.v2ex.domain.executor.Executor;
-import me.hellofwy.v2ex.domain.interactors.base.AbstractInteractor;
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import me.hellofwy.v2ex.domain.executor.Executor;
+import me.hellofwy.v2ex.domain.interactors.base.AbstractInteractor;
 
 /**
  * This singleton class will make sure that each interactor operation gets a background thread.

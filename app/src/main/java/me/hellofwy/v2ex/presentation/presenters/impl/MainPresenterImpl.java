@@ -10,8 +10,8 @@ import me.hellofwy.v2ex.domain.interactors.impl.GetLatestTopicsInteractorImpl;
 import me.hellofwy.v2ex.domain.interactors.impl.RefreshLatestTopicsInteractorImpl;
 import me.hellofwy.v2ex.domain.model.TopicModel;
 import me.hellofwy.v2ex.domain.repository.TopicRepository;
-import me.hellofwy.v2ex.presentation.presenters.base.AbstractPresenter;
 import me.hellofwy.v2ex.presentation.presenters.MainPresenter;
+import me.hellofwy.v2ex.presentation.presenters.base.AbstractPresenter;
 import timber.log.Timber;
 
 /**

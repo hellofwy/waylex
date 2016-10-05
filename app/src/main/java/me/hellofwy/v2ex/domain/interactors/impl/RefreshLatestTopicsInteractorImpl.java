@@ -4,7 +4,6 @@ import java.util.List;
 
 import me.hellofwy.v2ex.domain.executor.Executor;
 import me.hellofwy.v2ex.domain.executor.MainThread;
-import me.hellofwy.v2ex.domain.interactors.GetLatestTopicsInteractor;
 import me.hellofwy.v2ex.domain.interactors.RefreshLatestTopicsInteractor;
 import me.hellofwy.v2ex.domain.interactors.base.AbstractInteractor;
 import me.hellofwy.v2ex.domain.model.TopicModel;

@@ -2,14 +2,12 @@ package me.hellofwy.v2ex.presentation.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 import com.squareup.picasso.Picasso;
 
@@ -20,17 +18,9 @@ import java.util.Set;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import jp.wasabeef.picasso.transformations.CropCircleTransformation;
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 import me.hellofwy.v2ex.R;
 import me.hellofwy.v2ex.domain.model.TopicModel;
-import me.hellofwy.v2ex.network.V2EXapi;
-import me.hellofwy.v2ex.presentation.ui.activities.WebViewActivity;
 import me.hellofwy.v2ex.util.LatestTimeFormat;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-import static java.lang.System.load;
-import static me.hellofwy.v2ex.R.id.layout_content;
 
 /**
  * Created by fwy on 2016/9/28.
@@ -42,6 +32,8 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         void openUrl(String url);
 
         void openMember(Long id);
+
+        void openNode(String name);
     }
     private enum ITEM_TYPE {
         NORMAL,
@@ -120,6 +112,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             avatar.setOnClickListener(this);
             title.setOnClickListener(this);
             member.setOnClickListener(this);
+            node.setOnClickListener(this);
         }
 
         public void setContentVisibility(boolean visibility) {
@@ -141,6 +134,9 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 case R.id.image_view_avatar:
                 case R.id.text_view_member:
                     mParentActivity.openMember(mTopic.getMember().getId());
+                    break;
+                case R.id.text_view_node:
+                    mParentActivity.openNode(mTopic.getNode().getName());
                     break;
             }
         }

@@ -19,7 +19,6 @@ import me.hellofwy.v2ex.domain.model.MemberModel;
 import me.hellofwy.v2ex.network.TopicRepositoryImpl;
 import me.hellofwy.v2ex.presentation.presenters.MemberPresenter;
 import me.hellofwy.v2ex.presentation.presenters.impl.MemberPresenterImpl;
-import me.hellofwy.v2ex.storage.TestTopicRepositoryImpl;
 import me.hellofwy.v2ex.threading.MainThreadImpl;
 
 /**
@@ -32,6 +31,7 @@ public class MemberActivity extends AppCompatActivity
 
     public static final String MEMBER_ID = "member_id";
     public static final String MEMBER_NAME = "member_name";
+
     @Bind(R.id.avatar)
     ImageView avatar;
     @Bind(R.id.name)

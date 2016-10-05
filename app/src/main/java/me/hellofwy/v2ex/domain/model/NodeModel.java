@@ -15,7 +15,7 @@ public class NodeModel {
     @SerializedName("created")
     private Long mCreated;
     @SerializedName("footer")
-    private Object mFooter;
+    private String mFooter;
     @SerializedName("header")
     private String mHeader;
     @SerializedName("id")
@@ -65,11 +65,11 @@ public class NodeModel {
         mCreated = created;
     }
 
-    public Object getFooter() {
+    public String getFooter() {
         return mFooter;
     }
 
-    public void setFooter(Object footer) {
+    public void setFooter(String footer) {
         mFooter = footer;
     }
 

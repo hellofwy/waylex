@@ -2,7 +2,6 @@ package me.hellofwy.v2ex.domain.interactors.impl;
 
 import me.hellofwy.v2ex.domain.executor.Executor;
 import me.hellofwy.v2ex.domain.executor.MainThread;
-import me.hellofwy.v2ex.domain.interactors.GetLatestTopicsInteractor;
 import me.hellofwy.v2ex.domain.interactors.GetMemberInfoInteractor;
 import me.hellofwy.v2ex.domain.interactors.base.AbstractInteractor;
 import me.hellofwy.v2ex.domain.model.MemberModel;

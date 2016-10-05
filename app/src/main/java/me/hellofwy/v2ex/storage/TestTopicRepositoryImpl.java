@@ -4,13 +4,10 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import me.hellofwy.v2ex.R;
@@ -18,13 +15,7 @@ import me.hellofwy.v2ex.domain.model.MemberModel;
 import me.hellofwy.v2ex.domain.model.NodeModel;
 import me.hellofwy.v2ex.domain.model.TopicModel;
 import me.hellofwy.v2ex.domain.repository.TopicRepository;
-import me.hellofwy.v2ex.network.V2EXapi;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
-
-import static android.R.attr.path;
 
 /**
  * Created by fwy on 2016/9/28.

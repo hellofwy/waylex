@@ -1,6 +1,5 @@
 package me.hellofwy.v2ex.domain.repository;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import me.hellofwy.v2ex.domain.model.MemberModel;

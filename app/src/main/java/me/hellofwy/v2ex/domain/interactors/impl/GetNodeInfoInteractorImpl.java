@@ -1,14 +1,10 @@
 package me.hellofwy.v2ex.domain.interactors.impl;
 
-import java.util.List;
-
 import me.hellofwy.v2ex.domain.executor.Executor;
 import me.hellofwy.v2ex.domain.executor.MainThread;
-import me.hellofwy.v2ex.domain.interactors.GetHotTopicsInteractor;
 import me.hellofwy.v2ex.domain.interactors.GetNodeInfoInteractor;
 import me.hellofwy.v2ex.domain.interactors.base.AbstractInteractor;
 import me.hellofwy.v2ex.domain.model.NodeModel;
-import me.hellofwy.v2ex.domain.model.TopicModel;
 import me.hellofwy.v2ex.domain.repository.TopicRepository;
 
 /**
