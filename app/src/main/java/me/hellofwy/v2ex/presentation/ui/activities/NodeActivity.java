@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.SpannedString;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -65,9 +66,10 @@ public class NodeActivity extends AppCompatActivity
         setContentView(R.layout.activity_node);
         ButterKnife.bind(this);
 
+        toolBar.setTitle(R.string.node_activity_title);
         setSupportActionBar(toolBar);
-//        toolBar.setTitle("v2ex");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         init();
     }
 
@@ -144,5 +146,15 @@ public class NodeActivity extends AppCompatActivity
     public void onRefresh() {
         //TODO
         swipeContainer.setRefreshing(false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

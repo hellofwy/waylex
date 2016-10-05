@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">V2EX</string>
+    <string name="node_activity_title">Node</string>
+    <string name="member_activity_title">Member</string>
 </resources>

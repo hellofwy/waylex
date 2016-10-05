@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -71,9 +72,10 @@ public class MemberActivity extends AppCompatActivity
         setContentView(R.layout.activity_member);
         ButterKnife.bind(this);
 
+        toolBar.setTitle(R.string.member_activity_title);
         setSupportActionBar(toolBar);
-//        toolBar.setTitle("v2ex");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         init();
     }
 
@@ -157,5 +159,15 @@ public class MemberActivity extends AppCompatActivity
     public void onRefresh() {
         //TODO
         swipeContainer.setRefreshing(false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
