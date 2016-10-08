@@ -96,8 +96,8 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mTopic = topic;
             Picasso.with((Activity)context)
                     .load("https:" + topic.getMember().getAvatarNormal())
-                    .placeholder(R.drawable.avatar_default)
-                    .error(R.drawable.avatar_fail)
+                    .placeholder(R.drawable.loading_circle)
+                    .error(R.drawable.error_circle)
 //                    .transform(new RoundedCornersTransformation(4, 0))
                     .into(avatar);
             title.setText(topic.getTitle());

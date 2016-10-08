@@ -1,5 +1,7 @@
 package me.hellofwy.v2ex.presentation.ui.activities;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -144,21 +146,29 @@ public class NodeActivity extends AppCompatActivity
         Picasso.with(this)
                 .load("https:" + node.getAvatarLarge())
                 .into(new Target() {
+                    private Animator animator= AnimatorInflater.loadAnimator(NodeActivity.this,
+                            R.animator.rotation);
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        animator.cancel();
+                        avatar.setRotation(0);
                         avatar.setImageBitmap(bitmap);
                         setToolBarBackgroundAndTextColorWithPalette(bitmap);
                     }
 
                     @Override
                     public void onBitmapFailed(Drawable errorDrawable) {
-                        avatar.setImageResource(R.drawable.avatar_fail);
+                        animator.cancel();
+                        avatar.setRotation(0);
+                        avatar.setImageResource(R.drawable.error_circle);
 
                     }
 
                     @Override
                     public void onPrepareLoad(Drawable placeHolderDrawable) {
-                        avatar.setImageResource(R.drawable.avatar_default);
+                        avatar.setImageResource(R.drawable.loading_circle);
+                        animator.setTarget(avatar);
+                        animator.start();
                     }
                 });
         name.setText(node.getName());
