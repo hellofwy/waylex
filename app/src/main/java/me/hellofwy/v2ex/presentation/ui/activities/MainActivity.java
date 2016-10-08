@@ -15,12 +15,15 @@ import butterknife.ButterKnife;
 import me.hellofwy.v2ex.R;
 import me.hellofwy.v2ex.domain.executor.impl.ThreadExecutor;
 import me.hellofwy.v2ex.domain.model.TopicModel;
+import me.hellofwy.v2ex.network.TopicRepositoryImpl;
 import me.hellofwy.v2ex.presentation.presenters.MainPresenter;
 import me.hellofwy.v2ex.presentation.presenters.impl.MainPresenterImpl;
 import me.hellofwy.v2ex.presentation.ui.adapter.ItemAdapter;
 import me.hellofwy.v2ex.storage.TestTopicRepositoryImpl;
 import me.hellofwy.v2ex.threading.MainThreadImpl;
 import timber.log.Timber;
+
+import static me.hellofwy.v2ex.util.Convertor.setStatusBarTranslucentIfKitKatAbove;
 
 public class MainActivity extends AppCompatActivity
     implements MainPresenter.View,
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+//        setStatusBarTranslucentIfKitKatAbove(this, toolbar);
+
         mAdapter = new ItemAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
@@ -53,8 +58,8 @@ public class MainActivity extends AppCompatActivity
                 ThreadExecutor.getInstance(),
                 MainThreadImpl.getInstance(),
                 this,
-                new TestTopicRepositoryImpl(this)
-//                new TopicRepositoryImpl()
+//                new TestTopicRepositoryImpl(this)
+                new TopicRepositoryImpl()
         );
 
         setSupportActionBar(toolbar);
