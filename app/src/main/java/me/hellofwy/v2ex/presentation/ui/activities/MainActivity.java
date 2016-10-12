@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -78,6 +79,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void showLatestTopics(List<TopicModel> topics) {
         if(topics == null) {
+            Toast.makeText(this, "Get topics failed, may network failed!",
+                    Toast.LENGTH_SHORT)
+                    .show();
             Timber.e("api failed");
         } else {
             mAdapter.addTopics(topics);
