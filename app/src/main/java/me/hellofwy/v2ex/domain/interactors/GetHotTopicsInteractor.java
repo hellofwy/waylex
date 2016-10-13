@@ -11,6 +11,7 @@ public interface GetHotTopicsInteractor extends Interactor {
 
     interface Callback {
         void onGetHotTopics(List<TopicModel> topics);
+        void onGetHotTopicsError(String errorMessage);
     }
 
     // TODO: Add interactor methods here

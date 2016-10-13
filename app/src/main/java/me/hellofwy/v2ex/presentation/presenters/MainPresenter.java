@@ -9,8 +9,6 @@ import me.hellofwy.v2ex.presentation.ui.BaseView;
 
 public interface MainPresenter extends BasePresenter {
 
-    void swipeRefresh();
-
     interface View extends BaseView {
         void showLatestTopics(List<TopicModel> topics);
 
@@ -18,4 +16,6 @@ public interface MainPresenter extends BasePresenter {
     }
 
     void getLatestTopics();
+
+    void swipeRefresh();
 }

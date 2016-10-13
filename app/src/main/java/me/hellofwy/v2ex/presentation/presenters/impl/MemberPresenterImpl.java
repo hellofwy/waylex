@@ -89,4 +89,10 @@ public class MemberPresenterImpl extends AbstractPresenter
         mView.showMember(member);
         mView.hideProgress();
     }
+
+    @Override
+    public void onGetMemberInfoError(String errorMessage) {
+        mView.showError(errorMessage);
+        mView.hideProgress();
+    }
 }

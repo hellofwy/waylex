@@ -79,4 +79,10 @@ public class NodePresenterImpl extends AbstractPresenter
         mView.showNode(node);
         mView.hideProgress();
     }
+
+    @Override
+    public void onGetNodeInfoError(String errorMessage) {
+        mView.showError(errorMessage);
+        mView.hideProgress();
+    }
 }

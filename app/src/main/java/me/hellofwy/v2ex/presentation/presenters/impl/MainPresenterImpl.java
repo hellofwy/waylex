@@ -71,6 +71,12 @@ public class MainPresenterImpl extends AbstractPresenter implements MainPresente
     }
 
     @Override
+    public void onGetLatestTopicsError(String errorMessage) {
+        mView.hideProgress();
+        mView.showError(errorMessage);
+    }
+
+    @Override
     public void getLatestTopics() {
         mView.showProgress();
         GetLatestTopicsInteractor interactor =
@@ -98,6 +104,12 @@ public class MainPresenterImpl extends AbstractPresenter implements MainPresente
     @Override
     public void onRefreshLatestTopics(List<TopicModel> topics) {
         mView.showLatestTopics(topics);
+        mView.finishRefresh();
+    }
+
+    @Override
+    public void onRefreshLatestTopicsError(String message) {
+        mView.showError(message);
         mView.finishRefresh();
     }
 }

@@ -2,14 +2,20 @@ package me.hellofwy.v2ex.network;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import me.hellofwy.v2ex.domain.model.MemberModel;
 import me.hellofwy.v2ex.domain.model.NodeModel;
 import me.hellofwy.v2ex.domain.model.TopicModel;
 import me.hellofwy.v2ex.domain.repository.TopicRepository;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static me.hellofwy.v2ex.R.id.topics;
+import static me.hellofwy.v2ex.R.raw.member;
+import static me.hellofwy.v2ex.R.raw.node;
 
 /**
  * Created by fwy on 2016/9/28.
@@ -25,8 +31,14 @@ public class TopicRepositoryImpl implements TopicRepository {
     }
 
     private V2EXapi getV2EXapiService() {
+        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .build();
+
         if(mV2EXapiService == null) {
             Retrofit retrofit = new Retrofit.Builder()
+                    .client(okHttpClient)
                     .baseUrl(V2EXapi.BASU_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
@@ -37,62 +49,32 @@ public class TopicRepositoryImpl implements TopicRepository {
     }
 
     @Override
-    public List<TopicModel> getLatestTopics() {
+    public List<TopicModel> getLatestTopics() throws IOException {
         Call<List<TopicModel>> topics_call = mV2EXapiService.getLatestTopics();
-        List<TopicModel> topics;
-        try {
-            topics = topics_call.execute().body();
-        } catch (IOException e) {
-            return null;
-        }
-        return topics;
+        return topics_call.execute().body();
     }
 
     @Override
-    public List<TopicModel> getHotTopics() {
+    public List<TopicModel> getHotTopics() throws IOException {
         Call<List<TopicModel>> topics_call = mV2EXapiService.getHotTopics();
-        List<TopicModel> topics;
-        try {
-            topics = topics_call.execute().body();
-        } catch (IOException e) {
-            return null;
-        }
-        return topics;
+        return topics_call.execute().body();
     }
 
     @Override
-    public NodeModel getNodeInfo(String nodeName) {
+    public NodeModel getNodeInfo(String nodeName) throws IOException {
         Call<NodeModel> node_call = mV2EXapiService.getNodeInfo(nodeName);
-        NodeModel node;
-        try {
-            node = node_call.execute().body();
-        } catch (IOException e) {
-            return null;
-        }
-        return node;
+        return node_call.execute().body();
     }
 
     @Override
-    public MemberModel getMemberInfoById(String memberId) {
+    public MemberModel getMemberInfoById(String memberId) throws IOException {
         Call<MemberModel> member_call = mV2EXapiService.getMemberInfoById(memberId);
-        MemberModel member;
-        try {
-            member = member_call.execute().body();
-        } catch (IOException e) {
-            return null;
-        }
-        return member;
+        return member_call.execute().body();
     }
 
     @Override
-    public MemberModel getMemberInfoByName(String memberName) {
+    public MemberModel getMemberInfoByName(String memberName) throws IOException {
         Call<MemberModel> member_call = mV2EXapiService.getMemberInfoByName(memberName);
-        MemberModel member;
-        try {
-            member = member_call.execute().body();
-        } catch (IOException e) {
-            return null;
-        }
-        return member;
+        return member_call.execute().body();
     }
 }

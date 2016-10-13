@@ -108,7 +108,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void showError(String message) {
-
+        Toast.makeText(this, message,
+                Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override

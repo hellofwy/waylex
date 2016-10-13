@@ -12,5 +12,7 @@ public interface RefreshLatestTopicsInteractor extends Interactor {
 
     interface Callback {
         void onRefreshLatestTopics(List<TopicModel> topics);
+
+        void onRefreshLatestTopicsError(String message);
     }
 }

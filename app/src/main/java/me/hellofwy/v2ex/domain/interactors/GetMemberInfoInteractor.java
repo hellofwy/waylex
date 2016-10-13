@@ -9,6 +9,7 @@ public interface GetMemberInfoInteractor extends Interactor {
 
     interface Callback {
         void onGetMemberInfo(MemberModel member);
+        void onGetMemberInfoError(String errorMessage);
     }
 
     enum QueryType {

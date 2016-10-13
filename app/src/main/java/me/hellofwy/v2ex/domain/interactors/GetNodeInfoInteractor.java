@@ -9,6 +9,7 @@ public interface GetNodeInfoInteractor extends Interactor {
 
     interface Callback {
         void onGetNodeInfo(NodeModel node);
+        void onGetNodeInfoError(String errorMessage);
     }
 
     // TODO: Add interactor methods here

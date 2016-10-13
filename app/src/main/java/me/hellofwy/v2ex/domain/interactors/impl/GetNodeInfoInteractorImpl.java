@@ -1,5 +1,7 @@
 package me.hellofwy.v2ex.domain.interactors.impl;
 
+import java.io.IOException;
+
 import me.hellofwy.v2ex.domain.executor.Executor;
 import me.hellofwy.v2ex.domain.executor.MainThread;
 import me.hellofwy.v2ex.domain.interactors.GetNodeInfoInteractor;
@@ -30,12 +32,21 @@ public class GetNodeInfoInteractorImpl extends AbstractInteractor implements Get
 
     @Override
     public void run() {
-        final NodeModel node = mTopicRepository.getNodeInfo(mNodeName);
-        mMainThread.post(new Runnable() {
-            @Override
-            public void run() {
-                mCallback.onGetNodeInfo(node);
-            }
-        });
+        try {
+            final NodeModel node = mTopicRepository.getNodeInfo(mNodeName);
+            mMainThread.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onGetNodeInfo(node);
+                }
+            });
+        } catch (final IOException e) {
+            mMainThread.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onGetNodeInfoError(e.getMessage());
+                }
+            });
+        }
      }
 }

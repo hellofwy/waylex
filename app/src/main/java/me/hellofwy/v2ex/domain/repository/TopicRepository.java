@@ -1,5 +1,6 @@
 package me.hellofwy.v2ex.domain.repository;
 
+import java.io.IOException;
 import java.util.List;
 
 import me.hellofwy.v2ex.domain.model.MemberModel;
@@ -11,13 +12,13 @@ import me.hellofwy.v2ex.domain.model.TopicModel;
  */
 public interface TopicRepository {
 
-    List<TopicModel> getLatestTopics();
+    List<TopicModel> getLatestTopics() throws IOException;
 
-    List<TopicModel> getHotTopics();
+    List<TopicModel> getHotTopics() throws IOException;
 
-    NodeModel getNodeInfo(String nodeName);
+    NodeModel getNodeInfo(String nodeName) throws IOException;
 
-    MemberModel getMemberInfoById(String memberId);
+    MemberModel getMemberInfoById(String memberId) throws IOException;
 
-    MemberModel getMemberInfoByName(String memberName);
+    MemberModel getMemberInfoByName(String memberName) throws IOException;
 }

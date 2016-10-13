@@ -1,5 +1,7 @@
 package me.hellofwy.v2ex.domain.interactors.impl;
 
+import java.io.IOException;
+
 import me.hellofwy.v2ex.domain.executor.Executor;
 import me.hellofwy.v2ex.domain.executor.MainThread;
 import me.hellofwy.v2ex.domain.interactors.GetMemberInfoInteractor;
@@ -35,17 +37,26 @@ public class GetMemberInfoInteractorImpl extends AbstractInteractor
 
     @Override
     public void run() {
-        final MemberModel member;
-        if(mQueryType == QueryType.ID) {
-            member = mTopicRepository.getMemberInfoById(mQueryParameter);
-        } else {
-            member = mTopicRepository.getMemberInfoByName(mQueryParameter);
-        }
-        mMainThread.post(new Runnable() {
-            @Override
-            public void run() {
-                mCallback.onGetMemberInfo(member);
+        try {
+            final MemberModel member;
+            if (mQueryType == QueryType.ID) {
+                member = mTopicRepository.getMemberInfoById(mQueryParameter);
+            } else {
+                member = mTopicRepository.getMemberInfoByName(mQueryParameter);
             }
-        });
+            mMainThread.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onGetMemberInfo(member);
+                }
+            });
+        } catch (final IOException e) {
+            mMainThread.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onGetMemberInfoError(e.getMessage());
+                }
+            });
+        }
      }
 }

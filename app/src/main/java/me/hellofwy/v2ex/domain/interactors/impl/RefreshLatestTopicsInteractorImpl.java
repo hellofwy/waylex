@@ -1,5 +1,6 @@
 package me.hellofwy.v2ex.domain.interactors.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import me.hellofwy.v2ex.domain.executor.Executor;
@@ -30,12 +31,21 @@ public class RefreshLatestTopicsInteractorImpl extends AbstractInteractor
 
     @Override
     public void run() {
-        final List<TopicModel> topics = mTopicRepository.getLatestTopics();
-        mMainThread.post(new Runnable() {
-            @Override
-            public void run() {
-                mCallback.onRefreshLatestTopics(topics);
-            }
-        });
+        try {
+            final List<TopicModel> topics = mTopicRepository.getLatestTopics();
+            mMainThread.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onRefreshLatestTopics(topics);
+                }
+            });
+        } catch (final IOException e) {
+            mMainThread.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCallback.onRefreshLatestTopicsError(e.getMessage());
+                }
+            });
+        }
      }
 }
