@@ -1,20 +1,13 @@
-package me.kodelabs.v2ex;
+package me.hellofwy.v2ex;
 
 import com.google.gson.Gson;
 
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.util.List;
 
 import me.hellofwy.v2ex.domain.model.MemberModel;
@@ -25,7 +18,6 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.R.attr.path;
 import static org.junit.Assert.*;
 
 /**

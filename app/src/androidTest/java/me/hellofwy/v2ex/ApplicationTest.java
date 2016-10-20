@@ -1,4 +1,4 @@
-package me.kodelabs.v2ex;
+package me.hellofwy.v2ex;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
