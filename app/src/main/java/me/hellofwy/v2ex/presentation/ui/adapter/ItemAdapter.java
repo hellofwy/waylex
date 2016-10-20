@@ -28,12 +28,12 @@ import me.hellofwy.v2ex.util.LatestTimeFormat;
 
 public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public interface OpenUrlListener {
-        void openUrl(String url);
+    public interface TopicsItemListener {
+        void onTitleClicked(TopicModel url);
 
-        void openMember(Long id);
+        void onMemberClicked(TopicModel id);
 
-        void openNode(String name);
+        void onNodeClicked(TopicModel name);
     }
     private enum ITEM_TYPE {
         NORMAL,
@@ -82,7 +82,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private ItemAdapter mAdapter;
         private TopicModel mTopic;
-        private OpenUrlListener mParentActivity;
+        private TopicsItemListener mParentActivity;
 
         public ViewHolder(View itemView, ItemAdapter adapter) {
             super(itemView);
@@ -91,7 +91,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //            itemView.setOnClickListener(this);
         }
 
-        public void setup(OpenUrlListener context, TopicModel topic) {
+        public void setup(TopicsItemListener context, TopicModel topic) {
             mParentActivity = context;
             mTopic = topic;
             Picasso.with((Activity)context)
@@ -128,15 +128,15 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             switch (v.getId()) {
                 case R.id.text_view_title:
                     int position = getAdapterPosition();
-                    mParentActivity.openUrl(mTopic.getUrl());
+                    mParentActivity.onTitleClicked(mTopic);
                     break;
 
                 case R.id.image_view_avatar:
                 case R.id.text_view_member:
-                    mParentActivity.openMember(mTopic.getMember().getId());
+                    mParentActivity.onMemberClicked(mTopic);
                     break;
                 case R.id.text_view_node:
-                    mParentActivity.openNode(mTopic.getNode().getName());
+                    mParentActivity.onNodeClicked(mTopic);
                     break;
             }
         }
@@ -177,7 +177,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //            ((ViewHolder) holder).setup("title");
 //        }
         if (holder instanceof ViewHolder) {
-            ((ViewHolder) holder).setup((OpenUrlListener) mContext, mTopics.get(position));
+            ((ViewHolder) holder).setup((TopicsItemListener) mContext, mTopics.get(position));
             ((ViewHolder) holder).setContentVisibility(mSelectedItems.contains(position));
         }
     }

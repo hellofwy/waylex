@@ -13,9 +13,21 @@ public interface MainPresenter extends BasePresenter {
         void showLatestTopics(List<TopicModel> topics);
 
         void finishRefresh();
+
+        void showTopicDetailInWebView(String topicUrl);
+
+        void showMemberDetailUi(String memberId);
+        void showNodeDetailUi(String nodeName);
+
     }
 
     void getLatestTopics();
 
     void swipeRefresh();
+
+    void openTopic(TopicModel topic);
+
+    void openMember(TopicModel topic);
+
+    void openNode(TopicModel topic);
 }

@@ -102,6 +102,23 @@ public class MainPresenterImpl extends AbstractPresenter implements MainPresente
     }
 
     @Override
+    public void openTopic(TopicModel topic) {
+        mView.showTopicDetailInWebView(topic.getUrl());
+    }
+
+    @Override
+    public void openMember(TopicModel topic) {
+        mView.showMemberDetailUi(String.valueOf(
+                topic.getMember().getId().toString()
+        ));
+    }
+
+    @Override
+    public void openNode(TopicModel topic) {
+        mView.showNodeDetailUi(topic.getNode().getName());
+    }
+
+    @Override
     public void onRefreshLatestTopics(List<TopicModel> topics) {
         mView.showLatestTopics(topics);
         mView.finishRefresh();

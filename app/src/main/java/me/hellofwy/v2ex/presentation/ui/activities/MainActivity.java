@@ -20,15 +20,14 @@ import me.hellofwy.v2ex.network.TopicRepositoryImpl;
 import me.hellofwy.v2ex.presentation.presenters.MainPresenter;
 import me.hellofwy.v2ex.presentation.presenters.impl.MainPresenterImpl;
 import me.hellofwy.v2ex.presentation.ui.adapter.ItemAdapter;
-import me.hellofwy.v2ex.storage.TestTopicRepositoryImpl;
 import me.hellofwy.v2ex.threading.MainThreadImpl;
 import timber.log.Timber;
 
-import static me.hellofwy.v2ex.util.Convertor.setStatusBarTranslucentIfKitKatAbove;
+import static android.R.attr.id;
 
 public class MainActivity extends AppCompatActivity
     implements MainPresenter.View,
-               ItemAdapter.OpenUrlListener,
+        ItemAdapter.TopicsItemListener,
                SwipeRefreshLayout.OnRefreshListener {
 
     @Bind(R.id.recycler_view)
@@ -95,6 +94,28 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void showTopicDetailInWebView(String topicUrl) {
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("url", topicUrl);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void showMemberDetailUi(String memberId) {
+        Intent intent = new Intent(this, MemberActivity.class);
+        intent.putExtra(MemberActivity.MEMBER_ID, memberId);
+        startActivity(intent);
+    }
+
+    @Override
+    public void showNodeDetailUi(String nodeName) {
+        Intent intent = new Intent(this, NodeActivity.class);
+        intent.putExtra(NodeActivity.NODE_NAME, nodeName);
+        startActivity(intent);
+    }
+
+    @Override
     public void showProgress() {
 //        progressBar.setVisibility(View.VISIBLE);
         swipeContainer.setRefreshing(true);
@@ -119,23 +140,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void openUrl(String url) {
-        Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra("url", url);
-        startActivity(intent);
+    public void onTitleClicked(TopicModel topic) {
+        mMainPresenter.openTopic(topic);
     }
 
     @Override
-    public void openMember(Long id) {
-        Intent intent = new Intent(this, MemberActivity.class);
-        intent.putExtra(MemberActivity.MEMBER_ID, String.valueOf(id));
-        startActivity(intent);
+    public void onMemberClicked(TopicModel topic) {
+        mMainPresenter.openMember(topic);
     }
 
     @Override
-    public void openNode(String name) {
-        Intent intent = new Intent(this, NodeActivity.class);
-        intent.putExtra(NodeActivity.NODE_NAME, name);
-        startActivity(intent);
+    public void onNodeClicked(TopicModel topic) {
+        mMainPresenter.openNode(topic);
     }
 }
