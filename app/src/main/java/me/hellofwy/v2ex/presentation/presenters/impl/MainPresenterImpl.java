@@ -110,6 +110,7 @@ public class MainPresenterImpl extends AbstractPresenter implements MainPresente
     public void openMember(TopicModel topic) {
         mView.showMemberDetailUi(String.valueOf(
                 topic.getMember().getId().toString()
+//                "79583"
         ));
     }
 
